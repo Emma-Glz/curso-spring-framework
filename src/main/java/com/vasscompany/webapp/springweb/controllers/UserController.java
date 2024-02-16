@@ -1,5 +1,8 @@
 package com.vasscompany.webapp.springweb.controllers;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,20 @@ public class UserController {
         //model.addAttribute("name", "Gustavo");
         //model.addAttribute("lastname", "Gonzalez");
         return "details"; //html
+    }
+
+    @GetMapping("/list")
+    public String list(Model model){
+        //poblar la lista
+        List<User> users = Arrays.asList(
+            new  User("Raul", "Jimenez", "rj@gmail.com"),
+            new  User("Tony", "Montana", "tm@gmail.com"),
+            new  User("Juaquin", "Lopez")
+        );
+
+        model.addAttribute("users", users);
+        model.addAttribute("title", "listado de usuarios!");
+        return "list"; //html
     }
 
 }
