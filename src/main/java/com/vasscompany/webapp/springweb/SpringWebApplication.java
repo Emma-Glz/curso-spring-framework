@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource("classpath:values.properties")
+@PropertySource(value = "classpath:values.properties", encoding="UTF-8")
 public class SpringWebApplication {
 
 	public static void main(String[] args) {
