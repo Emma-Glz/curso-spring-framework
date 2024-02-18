@@ -1,7 +1,8 @@
-package com.vasscompany.webapp.springweb.controllers;
 
+package com.vasscompany.webapp.springweb.controllers;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,15 @@ public class PathVariableController {
     @Value("${config.listOfFruits}")
     private List<String> fruits;
 
+    @Value("#{${config.valuesMap}}")
+    private Map<String, Object> valuesMap;
+
+    @Value("#{${config.valuesMap}.product}")
+    private String product;
+   
+    @Value("#{${config.valuesMap}.price}")
+    private String price;
+
     @RequestMapping("/baz/{message}")
     public ParamDto baz(@PathVariable(name = "message") String msj) {
         ParamDto param = new ParamDto();
@@ -57,6 +67,9 @@ public class PathVariableController {
         json.put("message", message);
         json.put("fruitsString", fruitsString);
         json.put("fruits", fruits);
+        json.put("valuesMap", valuesMap);
+        json.put("product", product);
+        json.put("price", price);
 
         return json;
     }
