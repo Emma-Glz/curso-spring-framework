@@ -1,6 +1,7 @@
 package com.vasscompany.webapp.springweb.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,11 @@ public class PathVariableController {
     @Value("${config.message}")
     private String message;
 
+    @Value("#{'${config.listOfFruits}'.toUpperCase()}")
+    private String fruitsString;
+
     @Value("${config.listOfFruits}")
-    private String[] fruits;
+    private List<String> fruits;
 
     @RequestMapping("/baz/{message}")
     public ParamDto baz(@PathVariable(name = "message") String msj) {
@@ -51,6 +55,7 @@ public class PathVariableController {
         json.put("code", code);
         json.put("username", username);
         json.put("message", message);
+        json.put("fruitsString", fruitsString);
         json.put("fruits", fruits);
 
         return json;
