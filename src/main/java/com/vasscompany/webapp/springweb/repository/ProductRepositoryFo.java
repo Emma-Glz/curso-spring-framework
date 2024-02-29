@@ -3,8 +3,12 @@ package com.vasscompany.webapp.springweb.repository;
 import java.util.Collections;
 import java.util.List;
 
-import com.vasscompany.webapp.springweb.models.Product;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
+import com.vasscompany.webapp.springweb.models.Product;
+@Primary
+@Repository
 public class ProductRepositoryFo implements IProductRepository{
 
     @Override

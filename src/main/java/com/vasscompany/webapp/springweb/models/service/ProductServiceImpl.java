@@ -12,14 +12,14 @@ import com.vasscompany.webapp.springweb.repository.IProductRepository;
 
 @Service
 public class ProductServiceImpl implements IProductService{
-
-    //@Autowired
+    //@Qualifier("productRepositoryImpl")
+    @Autowired
     private IProductRepository repo;
     
-    @Autowired
-    public ProductServiceImpl(@Qualifier("productRepositoryImpl") IProductRepository repo) {
-        this.repo = repo;
-    }
+    //@Autowired
+    //public ProductServiceImpl(@Qualifier("productRepositoryFo") IProductRepository repo) {
+    //    this.repo = repo;
+    //}
 
     @Override
     public List<Product> findAllProducts(){
