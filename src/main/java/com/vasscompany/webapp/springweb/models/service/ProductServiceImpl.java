@@ -3,13 +3,25 @@ package com.vasscompany.webapp.springweb.models.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
 import com.vasscompany.webapp.springweb.models.Product;
-import com.vasscompany.webapp.springweb.repository.ProductRepository;
+import com.vasscompany.webapp.springweb.repository.IProductRepository;
 
-public class ProductService {
+@Service
+public class ProductServiceImpl implements IProductService{
 
-    private ProductRepository repo = new ProductRepository();
+    //@Autowired
+    private IProductRepository repo;
+    
+    @Autowired
+    public ProductServiceImpl(@Qualifier("productRepositoryImpl") IProductRepository repo) {
+        this.repo = repo;
+    }
 
+    @Override
     public List<Product> findAllProducts(){
         return repo.findAllProducts().stream().map( p -> {
             Double princeImp = p.getPrice() * 1.16d;
@@ -20,6 +32,7 @@ public class ProductService {
            }).collect(Collectors.toList());
     }
 
+    @Override
     public Product findProductById(Long id){
         return repo.findProductById(id);
     }
