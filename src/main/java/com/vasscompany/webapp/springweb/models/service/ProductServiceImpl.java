@@ -12,7 +12,7 @@ import com.vasscompany.webapp.springweb.repository.IProductRepository;
 
 @Service
 public class ProductServiceImpl implements IProductService{
-    //@Qualifier("productRepositoryImpl")
+    @Qualifier("productRepositoryImpl")
     @Autowired
     private IProductRepository repo;
     
@@ -25,11 +25,15 @@ public class ProductServiceImpl implements IProductService{
     public List<Product> findAllProducts(){
         return repo.findAllProducts().stream().map( p -> {
             Double princeImp = p.getPrice() * 1.16d;
+            
             //Product product = new Product(p.getId(),p.getName(),princeImp.longValue());
-            Product product = (Product) p.clone();
-            product.setPrice(princeImp.longValue());
-            return product;
-           }).collect(Collectors.toList());
+            //Product product = (Product) p.clone();
+            //product.setPrice(princeImp.longValue());
+            //return product;
+            //POR REQUEST SCOPE
+            p.setPrice(princeImp.longValue());   
+            return p;
+        }).collect(Collectors.toList());
     }
 
     @Override
