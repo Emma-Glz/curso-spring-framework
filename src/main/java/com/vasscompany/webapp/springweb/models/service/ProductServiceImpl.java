@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.vasscompany.webapp.springweb.models.Product;
@@ -15,6 +16,9 @@ public class ProductServiceImpl implements IProductService{
     @Qualifier("productRepositoryImpl")
     @Autowired
     private IProductRepository repo;
+
+    @Value("${config.properties}")
+    private Double configProperties;
     
     //@Autowired
     //public ProductServiceImpl(@Qualifier("productRepositoryFo") IProductRepository repo) {
@@ -24,15 +28,15 @@ public class ProductServiceImpl implements IProductService{
     @Override
     public List<Product> findAllProducts(){
         return repo.findAllProducts().stream().map( p -> {
-            Double princeImp = p.getPrice() * 1.16d;
+            Double princeImp = p.getPrice() * configProperties;
             
             //Product product = new Product(p.getId(),p.getName(),princeImp.longValue());
-            //Product product = (Product) p.clone();
-            //product.setPrice(princeImp.longValue());
-            //return product;
+            Product product = (Product) p.clone();
+            product.setPrice(princeImp.longValue());
+            return product;
             //POR REQUEST SCOPE
-            p.setPrice(princeImp.longValue());   
-            return p;
+            //p.setPrice(princeImp.longValue());   
+            //return p;
         }).collect(Collectors.toList());
     }
 

@@ -4,11 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.context.annotation.RequestScope;
 
 import com.vasscompany.webapp.springweb.models.Product;
 
-@RequestScope
+//@RequestScope
 @Repository
 public class ProductRepositoryImpl implements IProductRepository {
 
