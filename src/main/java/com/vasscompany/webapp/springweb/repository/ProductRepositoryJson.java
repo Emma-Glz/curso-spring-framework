@@ -18,13 +18,18 @@ public class ProductRepositoryJson implements IProductRepository {
 
     public ProductRepositoryJson() {
         Resource Resorce = new ClassPathResource("json/product.json");
+        readValueJson(Resorce);
+
+    }
+    
+    public ProductRepositoryJson(Resource resource) {
+        readValueJson(resource);
+
+    }
+    private void readValueJson(Resource resource) {
         ObjectMapper ojMapper = new ObjectMapper();
         try {
-            list = Arrays.asList(ojMapper.readValue(Resorce.getFile(), Product[].class));
-        } catch (StreamReadException e) {
-            e.printStackTrace();
-        } catch (DatabindException e) {
-            e.printStackTrace();
+            list = Arrays.asList(ojMapper.readValue(resource.getInputStream(), Product[].class));
         } catch (IOException e) {
             e.printStackTrace();
         }
