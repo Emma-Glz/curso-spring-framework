@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vasscompany.webapp.springweb.models.Product;
-import com.vasscompany.webapp.springweb.models.service.ProductServiceImpl;
+import com.vasscompany.webapp.springweb.service.ProductServiceImpl;
 
 @RestController
 @RequestMapping("/api")

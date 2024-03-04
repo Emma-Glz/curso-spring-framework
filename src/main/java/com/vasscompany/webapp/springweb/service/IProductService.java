@@ -1,4 +1,4 @@
-package com.vasscompany.webapp.springweb.models.service;
+package com.vasscompany.webapp.springweb.service;
 
 import java.util.List;
 

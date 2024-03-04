@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Colchon America",
+        "price": 4500
+    },
+    {
+        "id": 2,
+        "name": "Refrigerador LG",
+        "price": 12450
+    },
+    {
+        "id": 3,
+        "name": "Lentes de playa",
+        "price": 1200
+    },
+    {
+        "id": 4,
+        "name": "Funko Pop",
+        "price": 499
+    }
+]

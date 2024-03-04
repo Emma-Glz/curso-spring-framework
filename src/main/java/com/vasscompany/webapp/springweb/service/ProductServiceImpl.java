@@ -1,4 +1,4 @@
-package com.vasscompany.webapp.springweb.models.service;
+package com.vasscompany.webapp.springweb.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ import com.vasscompany.webapp.springweb.repository.IProductRepository;
 
 @Service
 public class ProductServiceImpl implements IProductService{
-    @Qualifier("productRepositoryImpl")
+    //@Qualifier("productRepositoryImpl")
     @Autowired
     private IProductRepository repo;
 
