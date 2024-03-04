@@ -6,14 +6,12 @@ import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vasscompany.webapp.springweb.models.Product;
 
-@Service
 public class ProductRepositoryJson implements IProductRepository {
 
     private List<Product> list;
